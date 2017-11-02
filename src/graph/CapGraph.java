@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * @author Your name here.
+ * @author Damian Wilinski.
  * 
  * For the warm up assignment, you must implement your Graph in a class
  * named CapGraph.  Here is the stub file.
@@ -16,13 +16,15 @@ import java.util.List;
  */
 public class CapGraph implements Graph {
 
+	private HashMap<Integer,HashSet<Integer>> graphMap = new HashMap<Integer,HashSet<Integer>>();
+	int graphMapSize = 0;
+
 	/* (non-Javadoc)
 	 * @see graph.Graph#addVertex(int)
 	 */
 	@Override
 	public void addVertex(int num) {
-		// TODO Auto-generated method stub
-
+		graphMap.put(graphMapSize++, new HashSet<Integer>());
 	}
 
 	/* (non-Javadoc)
@@ -30,8 +32,9 @@ public class CapGraph implements Graph {
 	 */
 	@Override
 	public void addEdge(int from, int to) {
-		// TODO Auto-generated method stub
-
+		if (!graphMap.containsKey(from) || !graphMap.containsKey(to))
+			throw new IllegalArgumentException("There is no: " + from + " " + to);
+		graphMap.get(from).add(to);
 	}
 
 	/* (non-Javadoc)
@@ -57,8 +60,7 @@ public class CapGraph implements Graph {
 	 */
 	@Override
 	public HashMap<Integer, HashSet<Integer>> exportGraph() {
-		// TODO Auto-generated method stub
-		return null;
+		return graphMap;
 	}
 
 }
