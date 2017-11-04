@@ -50,6 +50,5 @@ public class CapGraphTest {
             fail("There is no 1,2");
         } catch (IllegalArgumentException e) {
         }
-
     }
 }
